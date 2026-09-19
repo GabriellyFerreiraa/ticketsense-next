@@ -5,7 +5,8 @@ export default async function TicketsPage() {
   const { data: tickets, error } = await supabase.from("tickets").select("*");
 
   if (error) {
-    return <main className="p-8">Error: {error.message}</main>;
+    console.error("Error loading tickets:", error);
+    return <main className="p-8">Could not load tickets. Please try again later.</main>;
   }
 
   return (
